@@ -83,6 +83,11 @@ public class EnquiryDAOimpl implements EnquiryDAO {
         session.close();
 
     }
+
+    @Override
+    public Enquiry getByName(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
    
 

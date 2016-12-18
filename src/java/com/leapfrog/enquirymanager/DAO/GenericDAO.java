@@ -18,5 +18,6 @@ public interface GenericDAO <T>{
     T getById(int id);
     void delete(int id);
     void update(int id);
+    T getByName(String name);
     
 }
