@@ -9,6 +9,7 @@ import com.leapfrog.enquirymanager.DAO.CourseDAO;
 import com.leapfrog.enquirymanager.DAO.EnquiryDAO;
 import com.leapfrog.enquirymanager.DAO.EnquiryStatusDAO;
 import com.leapfrog.enquirymanager.entity.Enquiry;
+import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,14 @@ public class AdminController {
         enquiryDAO.update(enquiry.getEnquiryId());
         }
         return "redirect:/dashboard/admin/"; // In redirect jsp source is not given , over here the request mappting value is given
+    }
+    
+    @RequestMapping(value="/logout",method = RequestMethod.GET)
+    public String logout(HttpServletRequest req)
+    {
+        req.getSession(false).invalidate();
+        return "redirect:/";
+    
     }
     
 }

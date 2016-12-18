@@ -27,7 +27,11 @@
   
  
       <li role="presentation" class="pull-right"><a href="${SITE_URL}/dashboard/admin/">ADMIN <span class="glyphicon glyphicon-user"></span></a></li>
-</ul>
+      <li role="presentation" class="pull-right"><a href="${SITE_URL}/dashboard/admin/logout">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+
+    
+    
+    </ul>
     
     
    
