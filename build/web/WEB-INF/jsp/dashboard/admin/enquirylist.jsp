@@ -3,6 +3,8 @@
 
 <table class="table table-hover  table-striped">
     <tr>
+        <th> <input type="checkbox" onclick="toggle(this)"/></th>
+        
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
@@ -19,8 +21,10 @@
    
     <c:forEach var="enquiry" items="${enquiries}">
        
-        <tr id="box" class="${enquiry.enquirystatus.enquirystatusColor}" >
-
+        
+       <tr id="box" class="${enquiry.enquirystatus.enquirystatusColor}">
+           <td> <input type="checkbox" name="foo"></td>
+            
             <td>${enquiry.enquiryId}</td>
             <td>${enquiry.enquiryfirstName} ${enquiry.enquirylastName}</td>
             <td>${enquiry.enquiryEmail}</td>
@@ -42,8 +46,24 @@
 
 
     </c:forEach>
+                  
+            
 
 </table>
+
+<script>
+    function toggle(source)
+    {
+        checkboxes=document.getElementsByName('foo');
+        for(var i=0;i<checkboxes.length;i++)
+        {
+            checkboxes[i].checked=source.checked;
+            
+        }
+        
+    }
+                
+ </script> 
 
 
 <%@include file="../../footer.jsp" %>
