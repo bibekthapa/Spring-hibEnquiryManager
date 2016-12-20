@@ -12,6 +12,7 @@ import com.leapfrog.enquirymanager.DAO.MessageDAO;
 import com.leapfrog.enquirymanager.entity.Courses;
 import com.leapfrog.enquirymanager.entity.Enquiry;
 import com.leapfrog.enquirymanager.entity.Message1;
+import com.leapfrog.enquirymanager.thread.MessageThread;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -44,6 +45,9 @@ public class DashboardController {
     
     @Autowired
     private MessageDAO messageDAO;
+    
+    @Autowired
+    private MessageThread msgthread;
 
     @RequestMapping(method = RequestMethod.GET)
     
@@ -91,7 +95,7 @@ public class DashboardController {
       return "dashboard/admin/messageform";
     }
     
-    @RequestMapping(value = "/send",method = RequestMethod.POST)
+    @RequestMapping(value = "/send1",method = RequestMethod.POST)
     public String sendMail(HttpServletRequest request)
     {
         
@@ -140,5 +144,30 @@ public class DashboardController {
       return "redirect:/dashboard/admin/";
     
     
+    }
+    
+    @RequestMapping(value="/sendall",method = RequestMethod.GET)
+    public String sendAll(Model model)
+    {
+        model.addAttribute("enquiries",enquiryDAO.getAll());
+        model.addAttribute("msgFrom",messageDAO.getByName("MSG_FROM"));
+         model.addAttribute("msgHost",messageDAO.getByName("MSG_HOST"));
+    
+     return "dashboard/admin/msgformforall";
+    }
+    
+    @RequestMapping(value="/send",method = RequestMethod.POST)
+    public String sendEmailToall()
+    {
+        
+        
+        String to ="bibek.thapahere@gmail.com";
+        String from ="dixanta@gmail.com";
+        String host="smtp.ntc.net.np";
+        msgthread=new MessageThread(from,to,host);
+        
+        
+    
+    return null;
     }
 }

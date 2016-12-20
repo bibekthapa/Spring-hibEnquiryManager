@@ -3,8 +3,9 @@
 
 <table class="table table-hover  table-striped">
     <tr>
+    <div id="result"></div>
         <th> <input type="checkbox" onclick="toggle(this)"/></th>
-        
+
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
@@ -18,13 +19,13 @@
         <th></th>
 
     </tr>
-   
+
     <c:forEach var="enquiry" items="${enquiries}">
-       
-        
-       <tr id="box" class="${enquiry.enquirystatus.enquirystatusColor}">
-           <td> <input type="checkbox" name="foo"></td>
-            
+
+
+        <tr id="box" class="${enquiry.enquirystatus.enquirystatusColor}">
+            <td> <input type="checkbox" name="foo"></td>
+
             <td>${enquiry.enquiryId}</td>
             <td>${enquiry.enquiryfirstName} ${enquiry.enquirylastName}</td>
             <td>${enquiry.enquiryEmail}</td>
@@ -37,33 +38,31 @@
                 <a href="${SITE_URL}/dashboard/admin/edit/${enquiry.enquiryId}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
             <td> <a href="${SITE_URL}/dashboard/admin/delete/${enquiry.enquiryId}" class="btn btn-danger"><span class="glyphicon glyphicon-trash" onclick="return confirm('Are you sure?')"></span></a></td>
-            
-            <td> <a href="${SITE_URL}/dashboard/sendmail/${enquiry.enquiryId}" class="btn btn-success"><span class="glyphicon glyphicon-envelope" ></span></a></td>
-            
 
-            </tr> 
+            <td> <a href="${SITE_URL}/dashboard/sendmail/${enquiry.enquiryId}" class="btn btn-success"><span class="glyphicon glyphicon-envelope" ></span></a></td>
+
+
+        </tr> 
 
 
 
     </c:forEach>
-                  
-            
+
+
 
 </table>
 
 <script>
     function toggle(source)
     {
-        checkboxes=document.getElementsByName('foo');
-        for(var i=0;i<checkboxes.length;i++)
+        checkboxes = document.getElementsByName('foo');
+        for (var i = 0; i < checkboxes.length; i++)
         {
-            checkboxes[i].checked=source.checked;
-            
-        }
-        
-    }
-                
- </script> 
+            checkboxes[i].checked = source.checked;
+        }}
+    
+
+</script> 
 
 
 <%@include file="../../footer.jsp" %>
